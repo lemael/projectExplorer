@@ -56,6 +56,13 @@ export const LayerEditorPanel: React.FC<LayerEditorPanelProps> = ({
     borderRadius: "4px",
   };
 
+  // Style spécifique pour l'input de type 'color'
+  const colorInputStyle: React.CSSProperties = {
+    height: "40px",
+    padding: "0",
+    border: "1px solid #ccc",
+    width: "50px", // Petite largeur pour l'échantillon de couleur
+  };
   return (
     <div
       style={{
@@ -111,6 +118,22 @@ export const LayerEditorPanel: React.FC<LayerEditorPanelProps> = ({
             style={{ ...inputStyle, height: "80px" }}
           />
 
+          {/* Couleur */}
+          <label style={labelStyle} htmlFor="color">
+            Couleur :
+          </label>
+          <input
+            type="color"
+            name="color"
+            value={selectedLayer.color}
+            onChange={handlePropertyChange}
+            style={colorInputStyle}
+          />
+          <span
+            style={{ marginLeft: "10px", fontSize: "0.9rem", color: "#555" }}
+          >
+            {selectedLayer.color}
+          </span>
           {/* Dimensions */}
           <div style={{ display: "flex", gap: "15px" }}>
             <div>
