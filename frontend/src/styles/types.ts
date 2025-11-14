@@ -21,10 +21,11 @@ export interface Layer {
   width: number;
   /** Hauteur du calque. */
   height: number;
-  /** Couleur de fond (pour les calques de type 'text' ou 'image' colorée). */
-  color?: string;
+
   /** Contenu textuel (pour les calques de type 'text'). */
   text?: string;
   /** Ordre de superposition (z-index). Plus la valeur est élevée, plus le calque est au-dessus. */
   z: number;
+  backgroundColor?: string;
+  imageUrl?: string;
 }

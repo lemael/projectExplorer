@@ -58,7 +58,7 @@ export default function LayerDemo(): React.JSX.Element {
       y: 50 + Math.random() * 100,
       width: 180,
       height: 50,
-      color: randomColor,
+      backgroundColor: randomColor,
       text: `Nouveau Calque ${nextZ}`,
       z: nextZ,
     };

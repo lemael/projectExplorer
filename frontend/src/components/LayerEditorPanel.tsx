@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { Layer } from "../styles/types";
 
 interface LayerEditorPanelProps {
@@ -14,6 +14,7 @@ export const LayerEditorPanel: React.FC<LayerEditorPanelProps> = ({
   onSelectLayer,
   onUpdateLayer,
 }) => {
+  const [loading, setLoading] = useState(false);
   // Calque actuellement sélectionné (celui dont nous affichons les propriétés)
   const selectedLayer = layers.find((l) => l.id === selectedId);
 
@@ -41,6 +42,43 @@ export const LayerEditorPanel: React.FC<LayerEditorPanelProps> = ({
     // Informe le parent de la mise à jour
     onUpdateLayer(selectedLayer.id, { [name]: updateValue });
   };
+  // NOUVELLE FONCTION : Gère le téléversement d'image depuis l'ordinateur
+  const handleImageUpload = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (!selectedLayer || !e.target.files || e.target.files.length === 0)
+        return;
+
+      const file = e.target.files[0];
+      if (!file.type.startsWith("image/")) {
+        console.error("Le fichier sélectionné n'est pas une image.");
+        return;
+      }
+
+      setLoading(true);
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        // Le résultat est la data:URL (base64) de l'image
+        const dataUrl = event.target?.result as string;
+
+        // Mettre à jour le calque avec la nouvelle data:URL
+        onUpdateLayer(selectedLayer.id, { imageUrl: dataUrl });
+        setLoading(false);
+      };
+
+      reader.onerror = (error) => {
+        console.error("Erreur de lecture du fichier:", error);
+        setLoading(false);
+      };
+
+      // Lire le fichier comme une Data URL
+      reader.readAsDataURL(file);
+
+      // Réinitialiser la valeur du champ de fichier pour pouvoir téléverser le même fichier à nouveau si nécessaire
+      e.target.value = "";
+    },
+    [selectedLayer, onUpdateLayer]
+  );
 
   // Styles
   const labelStyle: React.CSSProperties = {
@@ -55,14 +93,21 @@ export const LayerEditorPanel: React.FC<LayerEditorPanelProps> = ({
     border: "1px solid #ccc",
     borderRadius: "4px",
   };
-
-  // Style spécifique pour l'input de type 'color'
-  const colorInputStyle: React.CSSProperties = {
-    height: "40px",
-    padding: "0",
-    border: "1px solid #ccc",
-    width: "50px", // Petite largeur pour l'échantillon de couleur
+  const buttonStyle: React.CSSProperties = {
+    padding: "8px 15px",
+    backgroundColor: "#22c55e", // Vert de Tailwind (green-500)
+    color: "white",
+    borderRadius: "4px",
+    border: "none",
+    cursor: "pointer",
+    marginTop: "10px",
+    opacity: loading ? 0.7 : 1,
+    pointerEvents: loading ? "none" : "auto",
   };
+  const fileInputStyle: React.CSSProperties = {
+    display: "none", // Cache l'input de fichier par défaut
+  };
+
   return (
     <div
       style={{
@@ -118,22 +163,59 @@ export const LayerEditorPanel: React.FC<LayerEditorPanelProps> = ({
             style={{ ...inputStyle, height: "80px" }}
           />
 
-          {/* Couleur */}
-          <label style={labelStyle} htmlFor="color">
-            Couleur :
+          {/* Couleur de Fond */}
+          <label style={labelStyle} htmlFor="backgroundColor">
+            Couleur de Fond (ex: #3498db) :
           </label>
           <input
-            type="color"
-            name="color"
-            value={selectedLayer.color}
+            type="text"
+            name="backgroundColor"
+            value={selectedLayer.backgroundColor}
             onChange={handlePropertyChange}
-            style={colorInputStyle}
+            style={inputStyle}
+            placeholder="#ffffff ou un nom de couleur"
           />
-          <span
-            style={{ marginLeft: "10px", fontSize: "0.9rem", color: "#555" }}
-          >
-            {selectedLayer.color}
-          </span>
+
+          {/* URL de l'Image de Fond (Manuelle) */}
+          <label style={labelStyle} htmlFor="imageUrl">
+            URL de l'Image de Fond (remplacera la couleur) :
+          </label>
+          <input
+            type="text"
+            name="imageUrl"
+            value={selectedLayer.imageUrl}
+            onChange={handlePropertyChange}
+            style={inputStyle}
+            placeholder="Ex: https://placehold.co/200x100"
+          />
+
+          {/* NOUVEAU : Téléversement de Fichier */}
+          <div style={{ marginTop: "15px" }}>
+            <label style={labelStyle}>Téléverser une image locale :</label>
+            <input
+              type="file"
+              id="image-upload"
+              accept="image/*"
+              onChange={handleImageUpload}
+              style={fileInputStyle}
+              disabled={loading}
+            />
+            <label htmlFor="image-upload" style={buttonStyle}>
+              {loading ? "Chargement..." : "Choisir un Fichier"}
+            </label>
+            {selectedLayer.imageUrl &&
+              !selectedLayer.imageUrl.startsWith("http") && (
+                <p
+                  style={{
+                    fontSize: "0.8rem",
+                    color: "#666",
+                    marginTop: "5px",
+                  }}
+                >
+                  (Image locale chargée)
+                </p>
+              )}
+          </div>
           {/* Dimensions */}
           <div style={{ display: "flex", gap: "15px" }}>
             <div>
