@@ -1,0 +1,250 @@
+{
+  "kind": "customsearch#search",
+  "url": {
+    "type": "application/json",
+    "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+  },
+  "queries": {
+    "request": [
+      {
+        "title": "Google Custom Search - festliche kleider",
+        "totalResults": "320000",
+        "searchTerms": "festliche kleider",
+        "count": 10,
+        "startIndex": 1,
+        "inputEncoding": "utf8",
+        "outputEncoding": "utf8",
+        "safe": "off",
+        "cx": "432b8f507234c47b8",
+        "siteSearch": "www.zalando.de",
+        "searchType": "image"
+      }
+    ],
+    "nextPage": [
+      {
+        "title": "Google Custom Search - festliche kleider",
+        "totalResults": "320000",
+        "searchTerms": "festliche kleider",
+        "count": 10,
+        "startIndex": 11,
+        "inputEncoding": "utf8",
+        "outputEncoding": "utf8",
+        "safe": "off",
+        "cx": "432b8f507234c47b8",
+        "siteSearch": "www.zalando.de",
+        "searchType": "image"
+      }
+    ]
+  },
+  "context": {
+    "title": "projectExplore"
+  },
+  "searchInformation": {
+    "searchTime": 0.408231,
+    "formattedSearchTime": "0.41",
+    "totalResults": "320000",
+    "formattedTotalResults": "320,000"
+  },
+  "items": [
+    {
+      "kind": "customsearch#result",
+      "title": "Grüne Festliche Kinderkleider Größe 170 von Top-Marken | große ...",
+      "htmlTitle": "Grüne <b>Festliche</b> Kinderkleider Größe 170 von Top-Marken | große ...",
+      "link": "https://img01.ztat.net/article/spp-media-p1/2d1585c3060140c7ae20c059dac1a218/cc223bc985824a738650af518f3691f0.jpg?imwidth=300",
+      "displayLink": "www.zalando.de",
+      "snippet": "Grüne Festliche Kinderkleider Größe 170 von Top-Marken | große ...",
+      "htmlSnippet": "Grüne <b>Festliche</b> Kinderkleider Größe 170 von Top-Marken | große ...",
+      "mime": "image/jpeg",
+      "fileFormat": "image/jpeg",
+      "image": {
+        "contextLink": "https://www.zalando.de/kinder-festliche-kleider/_gruen_groesse-170/",
+        "height": 433,
+        "width": 300,
+        "byteSize": 12960,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtDNuDeY0mamBTH64yphWbf4s1-Fdeq5ra3HkmcSCrlATyvNWKSgcTAA&s",
+        "thumbnailHeight": 126,
+        "thumbnailWidth": 87
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "Vera Mont Cocktailkleid/festliches Kleid - dusty slate/grau - Zalando",
+      "htmlTitle": "Vera Mont Cocktailkleid/<b>festliches Kleid</b> - dusty slate/grau - Zalando",
+      "link": "https://img01.ztat.net/article/spp-media-p1/c2a3d2618c75472f8db2a0b2d27ce20e/d148c720d64d494ca5e530e2e1bb0380.jpg?imwidth=1800",
+      "displayLink": "www.zalando.de",
+      "snippet": "Vera Mont Cocktailkleid/festliches Kleid - dusty slate/grau - Zalando",
+      "htmlSnippet": "Vera Mont Cocktailkleid/<b>festliches Kleid</b> - dusty slate/grau - Zalando",
+      "mime": "image/jpeg",
+      "fileFormat": "image/jpeg",
+      "image": {
+        "contextLink": "https://www.zalando.de/vera-mont-figurbetont-cocktailkleidfestliches-kleid-dusty-slate-vm321c0zm-c11.html",
+        "height": 2203,
+        "width": 1530,
+        "byteSize": 163279,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEkh1hk54pTorUL2Ylq6SUy3Xeu5ti3cl5rZkaqzym7gFSzO2UitHp9w&s",
+        "thumbnailHeight": 150,
+        "thumbnailWidth": 104
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "CHANCERY ETERNAL - Cocktailkleid/festliches Kleid - sage green ...",
+      "htmlTitle": "CHANCERY ETERNAL - Cocktailkleid/<b>festliches Kleid</b> - sage green ...",
+      "link": "https://img01.ztat.net/article/spp-media-p1/f66e0119ff92479e8247ac22c054da55/cac84be3ccb3444b9942726621c5a4fe.jpg?imwidth=762",
+      "displayLink": "www.zalando.de",
+      "snippet": "CHANCERY ETERNAL - Cocktailkleid/festliches Kleid - sage green ...",
+      "htmlSnippet": "CHANCERY ETERNAL - Cocktailkleid/<b>festliches Kleid</b> - sage green ...",
+      "mime": "image/jpeg",
+      "fileFormat": "image/jpeg",
+      "image": {
+        "contextLink": "https://www.zalando.de/chancery-cocktailkleidfestliches-kleid-sage-green-cfz21c017-m11.html",
+        "height": 1153,
+        "width": 800,
+        "byteSize": 59917,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo6UMQpfZIgVN41_qArTFBSgy4SyN5sKgKaeqh77BUCb6H_21-Y6fwWw&s",
+        "thumbnailHeight": 150,
+        "thumbnailWidth": 104
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "Festliche Kleider online entdecken | ZALANDO",
+      "htmlTitle": "<b>Festliche Kleider</b> online entdecken | ZALANDO",
+      "link": "https://img01.ztat.net/article/spp-media-p1/857cf3fd363f47679e796df1e94d7000/a0b112e009d049028cff4ab87a958cee.jpg?imwidth=300",
+      "displayLink": "www.zalando.de",
+      "snippet": "Festliche Kleider online entdecken | ZALANDO",
+      "htmlSnippet": "<b>Festliche Kleider</b> online entdecken | ZALANDO",
+      "mime": "image/jpeg",
+      "fileFormat": "image/jpeg",
+      "image": {
+        "contextLink": "https://www.zalando.de/festliche-kleider/",
+        "height": 432,
+        "width": 300,
+        "byteSize": 11706,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGkdo_pIrLwe9wu0mLKs-dAjILP1_6ps9XQrOp5H50QDY4u22ypjRnUQ&s",
+        "thumbnailHeight": 126,
+        "thumbnailWidth": 88
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "Festliche grüne Kleider Größe 48 online entdecken | ZALANDO",
+      "htmlTitle": "<b>Festliche</b> grüne <b>Kleider</b> Größe 48 online entdecken | ZALANDO",
+      "link": "https://img01.ztat.net/article/spp-media-p1/c817567386764356ae9e123affa17dbd/b241a1ee30694115aad19d94de92bced.jpg?imwidth=300",
+      "displayLink": "www.zalando.de",
+      "snippet": "Festliche grüne Kleider Größe 48 online entdecken | ZALANDO",
+      "htmlSnippet": "<b>Festliche</b> grüne <b>Kleider</b> Größe 48 online entdecken | ZALANDO",
+      "mime": "image/jpeg",
+      "fileFormat": "image/jpeg",
+      "image": {
+        "contextLink": "https://www.zalando.de/festliche-kleider/_gruen_groesse-48/",
+        "height": 433,
+        "width": 300,
+        "byteSize": 15347,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgBrTuLfI3Y1nawy-rcMYLC2QJP_h_s60hcJ66IgkKFhZ4xd1hofiG&s",
+        "thumbnailHeight": 126,
+        "thumbnailWidth": 87
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "Festliche pinke Kleider für Mädchen Größe 140 im SALE kaufen | ZALANDO",
+      "htmlTitle": "<b>Festliche</b> pinke <b>Kleider</b> für Mädchen Größe 140 im SALE kaufen | ZALANDO",
+      "link": "https://img01.ztat.net/article/spp-media-p1/6b57af7d3b9245c281e8e75ad65fa7ef/485e78a312e149c69b9e08f51822822f.jpg?imwidth=300",
+      "displayLink": "www.zalando.de",
+      "snippet": "Festliche pinke Kleider für Mädchen Größe 140 im SALE kaufen | ZALANDO",
+      "htmlSnippet": "<b>Festliche</b> pinke <b>Kleider</b> für Mädchen Größe 140 im SALE kaufen | ZALANDO",
+      "mime": "image/jpeg",
+      "fileFormat": "image/jpeg",
+      "image": {
+        "contextLink": "https://www.zalando.de/kinder-festliche-kleider-sale/_pink_groesse-140/",
+        "height": 433,
+        "width": 300,
+        "byteSize": 15861,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuNBUpwZUn8m2kszALybYpdNJSx8ZJmAidMiDKmQJTW1Lqgxz2Rgi1-A&s",
+        "thumbnailHeight": 126,
+        "thumbnailWidth": 87
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "Grüne Festliche Kinderkleider Größe 170 von Top-Marken | große ...",
+      "htmlTitle": "Grüne <b>Festliche</b> Kinderkleider Größe 170 von Top-Marken | große ...",
+      "link": "https://img01.ztat.net/article/spp-media-p1/4f2981c156374ff0ab0f9dfa5f119c07/34a9ddb2a6ee45579e6f1b574dba5e9a.jpg?imwidth=300",
+      "displayLink": "www.zalando.de",
+      "snippet": "Grüne Festliche Kinderkleider Größe 170 von Top-Marken | große ...",
+      "htmlSnippet": "Grüne <b>Festliche</b> Kinderkleider Größe 170 von Top-Marken | große ...",
+      "mime": "image/jpeg",
+      "fileFormat": "image/jpeg",
+      "image": {
+        "contextLink": "https://www.zalando.de/kinder-festliche-kleider/_gruen_groesse-170/",
+        "height": 433,
+        "width": 300,
+        "byteSize": 14238,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRDsROix4cxypC3UeKl4LNxL4HTf9fM5q8_4Md1uut3XWozqZnMkqF5A&s",
+        "thumbnailHeight": 126,
+        "thumbnailWidth": 87
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "Festliche grüne Kleider für Mädchen Größe 146 im SALE kaufen | ZALANDO",
+      "htmlTitle": "<b>Festliche</b> grüne <b>Kleider</b> für Mädchen Größe 146 im SALE kaufen | ZALANDO",
+      "link": "https://img01.ztat.net/article/spp-media-p1/82b4c2b1aeca4b5193eada1ed977f53c/a6bae47e7b194b76a1d2f6b02d867663.jpg?imwidth=300",
+      "displayLink": "www.zalando.de",
+      "snippet": "Festliche grüne Kleider für Mädchen Größe 146 im SALE kaufen | ZALANDO",
+      "htmlSnippet": "<b>Festliche</b> grüne <b>Kleider</b> für Mädchen Größe 146 im SALE kaufen | ZALANDO",
+      "mime": "image/jpeg",
+      "fileFormat": "image/jpeg",
+      "image": {
+        "contextLink": "https://www.zalando.de/kinder-festliche-kleider-sale/_gruen_groesse-146/",
+        "height": 433,
+        "width": 300,
+        "byteSize": 30586,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_HphHsUGPdxNqibe3TtuDVPW9xHoezr_78AtWa-_nHM_GrLNj4KWf&s",
+        "thumbnailHeight": 126,
+        "thumbnailWidth": 87
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "Beige Festliche Kinderkleider Größe 110 von Top-Marken | große ...",
+      "htmlTitle": "Beige <b>Festliche</b> Kinderkleider Größe 110 von Top-Marken | große ...",
+      "link": "https://img01.ztat.net/article/spp-media-p1/7e33b2cf97d84d518884fe5abd9ef6db/97ac1c3a971f48569f2f3b39ea205684.jpg?imwidth=300",
+      "displayLink": "www.zalando.de",
+      "snippet": "Beige Festliche Kinderkleider Größe 110 von Top-Marken | große ...",
+      "htmlSnippet": "Beige <b>Festliche</b> Kinderkleider Größe 110 von Top-Marken | große ...",
+      "mime": "image/jpeg",
+      "fileFormat": "image/jpeg",
+      "image": {
+        "contextLink": "https://www.zalando.de/kinder-festliche-kleider/_beige_groesse-110/",
+        "height": 432,
+        "width": 300,
+        "byteSize": 11158,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXhIOrXYOFudcyT7HcIsYHgNvAEgnuKQf7m68fbDKbOIvlX-sAMQq9&s",
+        "thumbnailHeight": 126,
+        "thumbnailWidth": 88
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "Festliche Kleider für Mädchen im SALE - Standard - Zalando - Seite 5",
+      "htmlTitle": "<b>Festliche Kleider</b> für Mädchen im SALE - Standard - Zalando - Seite 5",
+      "link": "https://img01.ztat.net/article/spp-media-p1/b508e9a87181471eae311ed54a9e38b0/bcebd007fe9342c3a4d0f08a37de1a44.jpg?imwidth=300",
+      "displayLink": "www.zalando.de",
+      "snippet": "Festliche Kleider für Mädchen im SALE - Standard - Zalando - Seite 5",
+      "htmlSnippet": "<b>Festliche Kleider</b> für Mädchen im SALE - Standard - Zalando - Seite 5",
+      "mime": "image/jpeg",
+      "fileFormat": "image/jpeg",
+      "image": {
+        "contextLink": "https://www.zalando.de/kinder-festliche-kleider-sale/?assortment_area=standard&p=5",
+        "height": 433,
+        "width": 300,
+        "byteSize": 13997,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Ynfs-rnTyp3wGGau-AQU22yn9uPDN32VQ2AYBwXMYmN4L3h9e153&s",
+        "thumbnailHeight": 126,
+        "thumbnailWidth": 87
+      }
+    }
+  ]
+}
