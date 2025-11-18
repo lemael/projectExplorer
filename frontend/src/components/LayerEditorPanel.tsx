@@ -118,11 +118,11 @@ export const LayerEditorPanel: React.FC<LayerEditorPanelProps> = ({
       }}
     >
       <h3 style={{ fontSize: "1.2rem", marginBottom: "15px" }}>
-        Propriétés du Calque
+        Eigenschaften der Ebene
       </h3>
 
       {/* 1. Liste Déroulante de Sélection */}
-      <label style={labelStyle}>Sélectionner le Calque :</label>
+      <label style={labelStyle}>Ebene auswählen:</label>
       <select
         name="layer"
         value={selectedId || ""}
@@ -130,7 +130,7 @@ export const LayerEditorPanel: React.FC<LayerEditorPanelProps> = ({
         style={{ ...inputStyle, marginBottom: "20px" }}
       >
         <option value="" disabled>
-          -- Choisir un Calque --
+          -- Auswählen einer Ebene --
         </option>
         {layers.map((l) => (
           <option key={l.id} value={l.id}>
@@ -149,12 +149,12 @@ export const LayerEditorPanel: React.FC<LayerEditorPanelProps> = ({
               paddingTop: "10px",
             }}
           >
-            Édition : **{selectedLayer.text}**
+            Ausgabe: **{selectedLayer.text}**
           </h4>
 
           {/* Édition du Texte */}
           <label style={labelStyle} htmlFor="text">
-            Texte :
+            Text :
           </label>
           <textarea
             name="text"
@@ -165,7 +165,7 @@ export const LayerEditorPanel: React.FC<LayerEditorPanelProps> = ({
 
           {/* Couleur de Fond */}
           <label style={labelStyle} htmlFor="backgroundColor">
-            Couleur de Fond (ex: #3498db) :
+            Hintergrundfarbe (zb: #3498db) :
           </label>
           <input
             type="text"
@@ -178,7 +178,7 @@ export const LayerEditorPanel: React.FC<LayerEditorPanelProps> = ({
 
           {/* URL de l'Image de Fond (Manuelle) */}
           <label style={labelStyle} htmlFor="imageUrl">
-            URL de l'Image de Fond (remplacera la couleur) :
+            Hintergrundbild-URL :
           </label>
           <input
             type="text"
@@ -191,7 +191,7 @@ export const LayerEditorPanel: React.FC<LayerEditorPanelProps> = ({
 
           {/* NOUVEAU : Téléversement de Fichier */}
           <div style={{ marginTop: "15px" }}>
-            <label style={labelStyle}>Téléverser une image locale :</label>
+            <label style={labelStyle}>Ein Bild hochladen:</label>
             <input
               type="file"
               id="image-upload"
@@ -201,7 +201,7 @@ export const LayerEditorPanel: React.FC<LayerEditorPanelProps> = ({
               disabled={loading}
             />
             <label htmlFor="image-upload" style={buttonStyle}>
-              {loading ? "Chargement..." : "Choisir un Fichier"}
+              {loading ? "Laden..." : "Datei auswählen"}
             </label>
             {selectedLayer.imageUrl &&
               !selectedLayer.imageUrl.startsWith("http") && (
@@ -212,7 +212,7 @@ export const LayerEditorPanel: React.FC<LayerEditorPanelProps> = ({
                     marginTop: "5px",
                   }}
                 >
-                  (Image locale chargée)
+                  (Bild geladen)
                 </p>
               )}
           </div>
@@ -220,7 +220,7 @@ export const LayerEditorPanel: React.FC<LayerEditorPanelProps> = ({
           <div style={{ display: "flex", gap: "15px" }}>
             <div>
               <label style={labelStyle} htmlFor="width">
-                Largeur (width) :
+                width :
               </label>
               <input
                 type="number"
@@ -232,7 +232,7 @@ export const LayerEditorPanel: React.FC<LayerEditorPanelProps> = ({
             </div>
             <div>
               <label style={labelStyle} htmlFor="height">
-                Hauteur (height) :
+                height :
               </label>
               <input
                 type="number"
@@ -246,7 +246,7 @@ export const LayerEditorPanel: React.FC<LayerEditorPanelProps> = ({
 
           {/* Ordre Z-Index */}
           <label style={labelStyle} htmlFor="z">
-            Ordre (Z-Index) :
+            Reihenfolge (Z-Index) :
           </label>
           <input
             type="number"
@@ -258,7 +258,7 @@ export const LayerEditorPanel: React.FC<LayerEditorPanelProps> = ({
         </div>
       ) : (
         <p style={{ color: "#888" }}>
-          Veuillez sélectionner un calque pour modifier ses propriétés.
+          Bitte wählen Sie eine Ebene aus, um deren Eigenschaften zu ändern.
         </p>
       )}
     </div>

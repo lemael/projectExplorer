@@ -5,6 +5,7 @@ import { containerStyles } from "../styles/LayerContainer.styles";
 import { Layer } from "../styles/types";
 import { DraggableLayer } from "./DraggableLayer"; // Importation du sous-composant
 import { LayerEditorPanel } from "./LayerEditorPanel"; // Importation du panneau d'édition des calques
+import { PreviewView } from "./PreviewView"; // Importation du composant de prévisualisation
 
 export default function LayerDemo(): React.JSX.Element {
   // ... (Vos états layers, draggingId, offset et containerRef)
@@ -14,6 +15,8 @@ export default function LayerDemo(): React.JSX.Element {
   const [draggingId, setDraggingId] = useState<string | null>(null);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [layers, setLayers] = useState<Layer[]>([]); // (Liste des calques)
+  //  NOUVEL ÉTAT POUR LE MODE APERÇU
+  const [isPreviewMode, setIsPreviewMode] = useState(false);
 
   // 🔸 Gérer la sélection/désélection d'un calque
   const handleSelectLayer = useCallback(
@@ -57,9 +60,9 @@ export default function LayerDemo(): React.JSX.Element {
       x: 50 + Math.random() * 100, // Position légèrement aléatoire pour ne pas être empilé
       y: 50 + Math.random() * 100,
       width: 180,
-      height: 50,
+      height: 180,
       backgroundColor: randomColor,
-      text: `Nouveau Calque ${nextZ}`,
+      text: `Neue Ebene ${nextZ}`,
       z: nextZ,
     };
 
@@ -110,6 +113,13 @@ export default function LayerDemo(): React.JSX.Element {
   // 🔸 Fin du drag (reste ici)
   const handleMouseUp = () => setDraggingId(null);
 
+  // Si on est en mode prévisualisation, on affiche uniquement le composant PreviewView
+  if (isPreviewMode) {
+    return (
+      <PreviewView layers={layers} onClose={() => setIsPreviewMode(false)} />
+    );
+  }
+
   return (
     <>
       <div
@@ -145,7 +155,7 @@ export default function LayerDemo(): React.JSX.Element {
             boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
           }}
         >
-          ➕ Ajouter un Calque
+          ➕ Ebene hinzufügen
         </button>
         <LayerEditorPanel
           layers={layers}
@@ -153,6 +163,23 @@ export default function LayerDemo(): React.JSX.Element {
           onSelectLayer={handleSelectLayer} // Permet de sélectionner via la liste
           onUpdateLayer={handleUpdateLayer} // Permet de modifier les propriétés
         />
+
+        {/* ⬅️ NOUVEAU : BOUTON PRÉVISUALISATION */}
+        <button
+          onClick={() => setIsPreviewMode(true)}
+          style={{
+            padding: "10px 15px",
+            backgroundColor: "#3b82f6", // Bleu
+            color: "white",
+            border: "none",
+            borderRadius: 6,
+            cursor: "pointer",
+            fontWeight: "bold",
+            boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+          }}
+        >
+          👁️ Vorschau
+        </button>
       </div>
     </>
   );
