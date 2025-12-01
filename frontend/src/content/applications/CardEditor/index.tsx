@@ -1,13 +1,13 @@
 // LayerDemo.tsx (Component Principal)
 
 import React, { useCallback, useRef, useState } from "react";
-import { containerStyles } from "../styles/LayerContainer.styles";
-import { Layer } from "../styles/types";
+import { containerStyles } from "../../../Types/LayerContainer.styles";
+import { Layer } from "../../../Types/types";
 import { DraggableLayer } from "./DraggableLayer"; // Importation du sous-composant
 import { LayerEditorPanel } from "./LayerEditorPanel"; // Importation du panneau d'édition des calques
 import { PreviewView } from "./PreviewView"; // Importation du composant de prévisualisation
 
-export default function LayerDemo(): React.JSX.Element {
+export default function ApplicationsCardEditor(): React.JSX.Element {
   // ... (Vos états layers, draggingId, offset et containerRef)
   const containerRef = useRef<HTMLDivElement>(null);
   // ... (Initialisation de layers)

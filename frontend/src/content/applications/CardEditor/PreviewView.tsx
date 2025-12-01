@@ -2,7 +2,7 @@
 
 import { X } from "lucide-react";
 import React from "react";
-import { Layer } from "../styles/types";
+import { Layer } from "../../../Types/types";
 import { DraggableLayer } from "./DraggableLayer";
 
 interface PreviewViewProps {

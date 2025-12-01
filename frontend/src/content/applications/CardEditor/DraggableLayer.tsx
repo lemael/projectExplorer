@@ -1,7 +1,7 @@
 // DraggableLayer.tsx
 
 import React from "react";
-import { Layer } from "../styles/types"; // Assurez-vous d'exporter vos types
+import { Layer } from "../../../Types/types";
 
 interface DraggableLayerProps {
   layer: Layer;

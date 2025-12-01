@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { Layer } from "../styles/types";
+import { Layer } from "../../../Types/types";
 
 interface LayerEditorPanelProps {
   layers: Layer[];
