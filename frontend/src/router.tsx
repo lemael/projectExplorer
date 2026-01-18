@@ -22,6 +22,13 @@ const CardEditor = Loader(
 const LoginDashboard = Loader(
   lazy(() => import("./content/pages/Login_dashboard"))
 );
+
+const MailingService = Loader(
+  lazy(() => import("./content/pages/MailingService"))
+);
+const CategoryGallery = Loader(
+  lazy(() => import("./content/pages/MailingService/CategoryGallery"))
+);
 const routes: RouteObject[] = [
   {
     path: "status",
@@ -51,6 +58,27 @@ const routes: RouteObject[] = [
       {
         path: "",
         element: <LoginDashboard />,
+      },
+    ],
+  },
+
+  {
+    path: "mailing_service",
+    element: <BaseLayout />,
+    children: [
+      {
+        path: "",
+        element: <MailingService />,
+      },
+    ],
+  },
+  {
+    path: "gallery/:categoryKey",
+    element: <BaseLayout />,
+    children: [
+      {
+        path: "",
+        element: <CategoryGallery />,
       },
     ],
   },

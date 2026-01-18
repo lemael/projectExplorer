@@ -1,9 +1,13 @@
 import { useContext } from "react";
 
+import CloseTwoToneIcon from "@mui/icons-material/CloseTwoTone";
+import MenuTwoToneIcon from "@mui/icons-material/MenuTwoTone";
 import {
   Box,
   Divider,
+  IconButton,
   Stack,
+  Tooltip,
   alpha,
   lighten,
   styled,
@@ -62,6 +66,23 @@ function Header() {
         alignItems="center"
         spacing={2}
       >
+        <Box
+          component="span"
+          sx={{
+            ml: 2,
+            display: { lg: "none", xs: "inline-block" },
+          }}
+        >
+          <Tooltip arrow title="Toggle Menu">
+            <IconButton color="primary" onClick={toggleSidebar}>
+              {!sidebarToggle ? (
+                <MenuTwoToneIcon fontSize="small" />
+              ) : (
+                <CloseTwoToneIcon fontSize="small" />
+              )}
+            </IconButton>
+          </Tooltip>
+        </Box>
         <HeaderMenu />
       </Stack>
     </HeaderWrapper>

@@ -6,6 +6,7 @@ import { Layer } from "../../../Types/types";
 import { DraggableLayer } from "./DraggableLayer"; // Importation du sous-composant
 import { LayerEditorPanel } from "./LayerEditorPanel"; // Importation du panneau d'édition des calques
 import { PreviewView } from "./PreviewView"; // Importation du composant de prévisualisation
+import handleSaveImage from "./handleSave"; // Importation de la fonction handleSaveImage
 
 export default function ApplicationsCardEditor(): React.JSX.Element {
   // ... (Vos états layers, draggingId, offset et containerRef)
@@ -17,7 +18,10 @@ export default function ApplicationsCardEditor(): React.JSX.Element {
   const [layers, setLayers] = useState<Layer[]>([]); // (Liste des calques)
   //  NOUVEL ÉTAT POUR LE MODE APERÇU
   const [isPreviewMode, setIsPreviewMode] = useState(false);
-
+  // 🔸 NOUVEL ÉTAT POUR LA CATÉGORIE
+  const [selectedCategory, setSelectedCategory] = useState(
+    "wählen Sie eine Kategorie"
+  );
   // 🔸 Gérer la sélection/désélection d'un calque
   const handleSelectLayer = useCallback(
     (id: string) => {
@@ -109,7 +113,12 @@ export default function ApplicationsCardEditor(): React.JSX.Element {
     },
     [draggingId, offset]
   );
-
+  const categories = [
+    "<<wählen Sie eine Kategorie>>",
+    "Kuvertierte_Mailings",
+    "Selfmailer_mit_Verschlussklappe",
+    "Selfmailer_ohne_Verschlussklappe",
+  ];
   // 🔸 Fin du drag (reste ici)
   const handleMouseUp = () => setDraggingId(null);
 
@@ -163,7 +172,6 @@ export default function ApplicationsCardEditor(): React.JSX.Element {
           onSelectLayer={handleSelectLayer} // Permet de sélectionner via la liste
           onUpdateLayer={handleUpdateLayer} // Permet de modifier les propriétés
         />
-
         {/* ⬅️ NOUVEAU : BOUTON PRÉVISUALISATION */}
         <button
           onClick={() => setIsPreviewMode(true)}
@@ -179,6 +187,45 @@ export default function ApplicationsCardEditor(): React.JSX.Element {
           }}
         >
           👁️ Vorschau
+        </button>
+        {/* Dans ton return, à côté du bouton de prévisualisation par exemple :
+        {/* 🔸 NOUVEAU : SELECTEUR DE CATÉGORIE */}
+        <select
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+          style={{
+            padding: "10px",
+            borderRadius: 6,
+            border: "1px solid #ccc",
+            backgroundColor: "white",
+            cursor: "pointer",
+            fontWeight: "500",
+          }}
+        >
+          {categories.map((cat) => (
+            <option key={cat} value={cat}>
+              {cat.replace(/_/g, " ")}{" "}
+              {/* Remplace les underscores par des espaces pour l'affichage */}
+            </option>
+          ))}
+        </select>
+        <button
+          onClick={() =>
+            handleSaveImage(containerRef.current, selectedCategory)
+          }
+          style={{
+            padding: "10px 15px",
+            marginLeft: "10px",
+            backgroundColor: "#ef4444", // Rouge
+            color: "white",
+            border: "none",
+            borderRadius: 6,
+            cursor: "pointer",
+            fontWeight: "bold",
+            boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+          }}
+        >
+          💾 Bild speichern
         </button>
       </div>
     </>
