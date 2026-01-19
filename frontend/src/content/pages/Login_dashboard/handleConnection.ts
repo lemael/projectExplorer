@@ -2,7 +2,7 @@ import { type AuthProvider, type AuthResponse } from "@toolpad/core/SignInPage";
 
 export const signIn: (
   provider: AuthProvider,
-  formData?: FormData
+  formData?: FormData,
 ) => Promise<AuthResponse> | void = async (provider, formData) => {
   // 1. Vérifie les identifiants
 
@@ -15,9 +15,6 @@ export const signIn: (
 
       const isValid = email === validEmail && password === validPassword;
       const error = isValid ? "" : "E-Mail oder Passwort ist falsch.";
-      const message = isValid
-        ? "Connexion réussie ! Redirection en cours..."
-        : `Signing in with "${provider.name}" and credentials: ${email}, ${password}`;
 
       resolve({
         type: "CredentialsSignin",
