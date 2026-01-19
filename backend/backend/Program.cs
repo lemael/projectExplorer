@@ -1,18 +1,21 @@
 var builder = WebApplication.CreateBuilder(args);
+
 // 1. AJOUT : Permet d'utiliser les fichiers dans le dossier /Controllers
 builder.Services.AddControllers();
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// 2. AJOUT : Configuration du CORS (pour éviter les erreurs de blocage navigateur)
+// 2. AJOUT : Configuration du CORS mise à jour avec l'URL Render
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:3000", "http://localhost:5173") // Ajoutez l'URL de votre frontend
+        policy.WithOrigins(
+                "http://localhost:3000", 
+                "http://localhost:5173", 
+                "https://jopke-backend.onrender.com" // Votre URL Render
+              ) 
               .AllowAnyMethod()
               .AllowAnyHeader();
     });
@@ -21,21 +24,19 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// NOTE : J'ai sorti Swagger du bloc IsDevelopment pour que vous puissiez 
+// voir l'interface de test sur Render (très utile pour débugger au début)
+app.UseSwagger();
+app.UseSwaggerUI();
 
 // 3. AJOUT : Activer le CORS avant les autres middlewares
 app.UseCors("AllowFrontend");
 
+// Optionnel : Render gère déjà le HTTPS, mais c'est une bonne pratique
 app.UseHttpsRedirection();
 
-// 4. AJOUT : Mappe les routes des contrôleurs (indispensable !)
+// 4. AJOUT : Mappe les routes des contrôleurs
 app.MapControllers();
-
-
 
 var summaries = new[]
 {
