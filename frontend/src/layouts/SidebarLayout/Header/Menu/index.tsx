@@ -1,6 +1,6 @@
 import { Box, List, ListItemButton, ListItemText } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { useRef, useState } from "react";
+//import { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const ListWrapper = styled(Box)(
@@ -55,6 +55,8 @@ const ListWrapper = styled(Box)(
 );
 
 function HeaderMenu() {
+  {
+    /*
   const ref = useRef<any>(null);
   const [isOpen, setOpen] = useState<boolean>(false);
 
@@ -65,6 +67,8 @@ function HeaderMenu() {
   const handleClose = (): void => {
     setOpen(false);
   };
+  */
+  }
 
   return (
     <>
