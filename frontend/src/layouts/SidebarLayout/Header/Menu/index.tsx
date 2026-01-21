@@ -1,6 +1,5 @@
 import { Box, List, ListItemButton, ListItemText } from "@mui/material";
 import { styled } from "@mui/material/styles";
-//import { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const ListWrapper = styled(Box)(
@@ -55,20 +54,7 @@ const ListWrapper = styled(Box)(
 );
 
 function HeaderMenu() {
-  {
-    /*
-  const ref = useRef<any>(null);
-  const [isOpen, setOpen] = useState<boolean>(false);
-
-  const handleOpen = (): void => {
-    setOpen(true);
-  };
-
-  const handleClose = (): void => {
-    setOpen(false);
-  };
-  */
-  }
+  // ✅ Les blocs d'accolades inutiles ont été supprimés ici
 
   return (
     <>
@@ -93,53 +79,9 @@ function HeaderMenu() {
           </ListItemButton>
         </List>
       </ListWrapper>
-      {/*}
-          <ListItemButton
-            classes={{ root: "MuiListItem-indicators" }}
-            component={NavLink}
-            to="/components/forms"
-          >
-            <ListItemText
-              primaryTypographyProps={{ noWrap: true }}
-              primary="Forms"
-            />
-          </ListItemButton>
-          <ListItemButton
-            classes={{ root: "MuiListItem-indicators" }}
-            ref={ref}
-            onClick={handleOpen}
-          >
-            <ListItemText
-              primaryTypographyProps={{ noWrap: true }}
-              primary={
-                <Box display="flex" alignItems="center">
-                  Others
-                  <Box display="flex" alignItems="center" pl={0.3}>
-                    <ExpandMoreTwoToneIcon fontSize="small" />
-                  </Box>
-                </Box>
-              }
-            />
-          </ListItemButton>
-        </List>
-      </ListWrapper>
-      <Menu anchorEl={ref.current} onClose={handleClose} open={isOpen}>
-        <MenuItem sx={{ px: 3 }} component={NavLink} to="/overview">
-          Overview
-        </MenuItem>
-        {/*}
-        <MenuItem sx={{ px: 3 }} component={NavLink} to="/components/tabs">
-          Tabs
-        </MenuItem>
-        <MenuItem sx={{ px: 3 }} component={NavLink} to="/components/cards">
-          Cards
-        </MenuItem>
-        <MenuItem sx={{ px: 3 }} component={NavLink} to="/components/modals">
-          Modals
-        </MenuItem>
-       
-      </Menu>
-       */}
+      {/* Le reste du code commenté a été déplacé ici ou supprimé 
+          pour éviter les erreurs de syntaxe dans le JSX 
+      */}
     </>
   );
 }
