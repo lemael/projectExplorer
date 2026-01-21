@@ -2,6 +2,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useRoutes } from "react-router-dom";
+import ErrorBoundary from "./ErrorBoundary";
 import routes from "./router";
 
 import { CssBaseline } from "@mui/material";
@@ -10,6 +11,14 @@ import { LayoutProvider } from "./contexts/LayoutContext"; // NOUVEAU: Import du
 import { SidebarProvider } from "./contexts/SidebarContext";
 import ThemeProvider from "./theme/ThemeProvider";
 
+// 🛡️ NETTOYAGE DE LA CONSOLE EN PRODUCTION
+// Empêche les hackers de lire les logs techniques via F12
+if (process.env.NODE_ENV === "production") {
+  console.log = () => {};
+  console.error = () => {};
+  console.debug = () => {};
+  console.warn = () => {};
+}
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,19 +39,23 @@ function App() {
   }, [location.pathname]);
 
   return (
-    <ThemeProvider>
-      <AuthProvider>
-        <SidebarProvider>
-          {/* 🚨 Le LayoutProvider enveloppe tout le contenu des routes pour injecter le contexte 🚨 */}
-          <LayoutProvider activePage={activePage} onNavigate={onNavigate}>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <CssBaseline />
-              {content}
-            </LocalizationProvider>
-          </LayoutProvider>
-        </SidebarProvider>
-      </AuthProvider>
-    </ThemeProvider>
+    <ErrorBoundary>
+      {" "}
+      {/* 1. Protection contre les crashs système */}
+      <ThemeProvider>
+        <AuthProvider>
+          <SidebarProvider>
+            {/* 🚨 Le LayoutProvider enveloppe tout le contenu des routes pour injecter le contexte 🚨 */}
+            <LayoutProvider activePage={activePage} onNavigate={onNavigate}>
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <CssBaseline />
+                {content}
+              </LocalizationProvider>
+            </LayoutProvider>
+          </SidebarProvider>
+        </AuthProvider>
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 }
 export default App;

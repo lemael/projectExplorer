@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { API_CONFIG } from "../../../api/config";
 
 const CategoryGallery: React.FC = () => {
   const { categoryKey } = useParams<{ categoryKey: string }>();
@@ -17,14 +18,16 @@ const CategoryGallery: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Utilisation de la configuration API
+    const API_BASE_URL = API_CONFIG.BASE_URL;
     const fetchImages = async () => {
       try {
-        const response = await fetch("http://localhost:5297/api/images/list");
+        const response = await fetch(`${API_BASE_URL}/api/images/list`);
         if (response.ok) {
           const allImages: string[] = await response.json();
           // FILTRAGE : On ne garde que les images contenant la catégorie dans leur nom
           const filtered = allImages.filter((url) =>
-            url.includes(categoryKey || "")
+            url.includes(categoryKey || ""),
           );
           console.log("response:", response);
           console.log("Images filtrées :", filtered);
@@ -53,11 +56,11 @@ const CategoryGallery: React.FC = () => {
         variant="text"
         sx={{ mb: 2 }}
       >
-        ← Retour aux solutions
+        ← Zurück
       </Button>
 
       <Typography variant="h4" fontWeight="bold" gutterBottom>
-        Galerie : {categoryKey?.replace(/_/g, " ")}
+        Bildergalerie : {categoryKey?.replace(/_/g, " ")}
       </Typography>
 
       {images.length > 0 ? (
@@ -77,7 +80,7 @@ const CategoryGallery: React.FC = () => {
         </ImageList>
       ) : (
         <Typography sx={{ mt: 4, color: "text.secondary" }}>
-          Aucune image sauvegardée pour cette catégorie.
+          Keine Bilder für diese Kategorie gespeichert.
         </Typography>
       )}
     </Container>

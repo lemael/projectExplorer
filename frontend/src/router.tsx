@@ -17,17 +17,21 @@ const Loader =
 // Applications
 
 const CardEditor = Loader(
-  lazy(() => import("./content/applications/CardEditor"))
+  lazy(() => import("./content/applications/CardEditor")),
 );
 const LoginDashboard = Loader(
-  lazy(() => import("./content/pages/Login_dashboard"))
+  lazy(() => import("./content/pages/Login_dashboard")),
 );
 
 const MailingService = Loader(
-  lazy(() => import("./content/pages/MailingService"))
+  lazy(() => import("./content/pages/MailingService")),
 );
 const CategoryGallery = Loader(
-  lazy(() => import("./content/pages/MailingService/CategoryGallery"))
+  lazy(() => import("./content/pages/MailingService/CategoryGallery")),
+);
+const Profil = Loader(lazy(() => import("./content/applications/profil")));
+const Einstellungen = Loader(
+  lazy(() => import("./content/applications/einstellungen")),
 );
 const routes: RouteObject[] = [
   {
@@ -103,11 +107,23 @@ const routes: RouteObject[] = [
         path: "cardEditor",
         element: <CardEditor />,
       },
+      {
+        path: "overview",
+        element: <MailingService />,
+      },
+      {
+        path: "settings",
+        element: <Einstellungen />,
+      },
+      {
+        path: "profile",
+        element: <Profil />,
+      },
     ],
   },
   {
     path: "",
-    element: <Navigate to="dashboards" replace />,
+    element: <Navigate to="mailing_service" replace />,
   },
 ];
 

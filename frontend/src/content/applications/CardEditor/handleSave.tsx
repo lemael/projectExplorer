@@ -1,4 +1,5 @@
 import html2canvas from "html2canvas";
+import { API_CONFIG } from "../../../api/config";
 
 // On définit la liste des catégories autorisées (doit correspondre à LayerDemo.tsx)
 const VALID_CATEGORIES = [
@@ -9,7 +10,7 @@ const VALID_CATEGORIES = [
 
 const handleSaveImage = async (
   element: HTMLDivElement | null,
-  category: string
+  category: string,
 ) => {
   // 1. Vérification de l'élément DOM
   if (!element) return;
@@ -44,21 +45,19 @@ const handleSaveImage = async (
       formData.append("imageFile", blob, fileName);
 
       console.log(`Envoi de l'image (${category}) au backend...`);
-
+      // Utilisation de la configuration API
+      const API_BASE_URL = API_CONFIG.BASE_URL;
       try {
-        const response = await fetch(
-          "http://localhost:5297/api/images/upload",
-          {
-            method: "POST",
-            body: formData,
-          }
-        );
+        const response = await fetch(`${API_BASE_URL}/api/images/upload`, {
+          method: "POST",
+          body: formData,
+        });
 
         if (response.ok) {
           const result = await response.json();
           console.log("Succès ! URL Cloudinary :", result.url);
           alert(
-            `Image sauvegardée avec succès dans : ${category.replace(/_/g, " ")}`
+            `Image sauvegardée avec succès dans : ${category.replace(/_/g, " ")}`,
           );
         } else {
           alert("Erreur serveur lors de la sauvegarde.");

@@ -55,7 +55,7 @@ const MailingServices: React.FC = () => {
         gutterBottom
         sx={{ mb: 6 }}
       >
-        Nos Solutions de Mailing
+        Unsere Mailing-Lösungen
       </Typography>
 
       {/* Flex-Container als Ersatz für Grid */}

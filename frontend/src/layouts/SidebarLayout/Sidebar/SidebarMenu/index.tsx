@@ -21,13 +21,13 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({
     { name: "home", text: "Home", icon: Home, path: "dashboards" }, // Ceci est le bouton que nous allons regarder
     {
       name: "cardEditor",
-      text: "Card Editor",
+      text: "Karteneditor",
       icon: PostAdd,
       path: "dashboards/cardEditor",
     },
     {
       name: "settings",
-      text: "Paramètres",
+      text: "Einstellungen",
       icon: Settings,
       path: "dashboards/settings",
     },

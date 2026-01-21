@@ -1,12 +1,4 @@
-import ExpandMoreTwoToneIcon from "@mui/icons-material/ExpandMoreTwoTone";
-import {
-  Box,
-  List,
-  ListItemButton,
-  ListItemText,
-  Menu,
-  MenuItem,
-} from "@mui/material";
+import { Box, List, ListItemButton, ListItemText } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -59,7 +51,7 @@ const ListWrapper = styled(Box)(
                 }
             }
         }
-`
+`,
 );
 
 function HeaderMenu() {
@@ -79,7 +71,7 @@ function HeaderMenu() {
       <ListWrapper
         sx={{
           display: {
-            xs: "none",
+            xs: "flex",
             md: "block",
           },
         }}
@@ -88,13 +80,16 @@ function HeaderMenu() {
           <ListItemButton
             classes={{ root: "MuiListItem-indicators" }}
             component={NavLink}
-            to="/components/buttons"
+            to="/dashboards/overview"
           >
             <ListItemText
               primaryTypographyProps={{ noWrap: true }}
-              primary="Buttons"
+              primary="Overview"
             />
           </ListItemButton>
+        </List>
+      </ListWrapper>
+      {/*}
           <ListItemButton
             classes={{ root: "MuiListItem-indicators" }}
             component={NavLink}
@@ -128,6 +123,7 @@ function HeaderMenu() {
         <MenuItem sx={{ px: 3 }} component={NavLink} to="/overview">
           Overview
         </MenuItem>
+        {/*}
         <MenuItem sx={{ px: 3 }} component={NavLink} to="/components/tabs">
           Tabs
         </MenuItem>
@@ -137,7 +133,9 @@ function HeaderMenu() {
         <MenuItem sx={{ px: 3 }} component={NavLink} to="/components/modals">
           Modals
         </MenuItem>
+       
       </Menu>
+       */}
     </>
   );
 }

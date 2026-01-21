@@ -1,4 +1,5 @@
 import { type AuthProvider, type AuthResponse } from "@toolpad/core/SignInPage";
+import { getAuthCredentials } from "../../../auth/authConfig";
 
 export const signIn: (
   provider: AuthProvider,
@@ -10,8 +11,9 @@ export const signIn: (
     setTimeout(() => {
       const email = formData?.get("email");
       const password = formData?.get("password");
-      const validEmail = "jopke@jopke.de";
-      const validPassword = "1234";
+
+      const { email: validEmail, password: validPassword } =
+        getAuthCredentials();
 
       const isValid = email === validEmail && password === validPassword;
       const error = isValid ? "" : "E-Mail oder Passwort ist falsch.";
