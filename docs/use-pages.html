@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Pages - Dokumentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      .sidebar-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      .active-link {
+        background-color: #1a252f;
+        border-left: 4px solid #3498db;
+      }
+    </style>
+  </head>
+  <body class="flex bg-gray-50 font-sans text-gray-800">
+    <aside
+      class="w-64 bg-[#2c3e50] text-white sticky top-0 h-screen overflow-y-auto"
+    >
+      <div
+        class="p-4 bg-[#3498db] flex items-center justify-center cursor-pointer"
+        onclick="window.location.href = 'index.html'"
+      >
+        <span class="font-bold tracking-wider uppercase text-sm italic"
+          >STN-CMS User</span
+        >
+      </div>
+      <nav class="text-sm mt-4">
+        <div
+          class="px-4 py-3 text-blue-400 uppercase font-bold text-[10px] tracking-widest"
+        >
+          Client Side
+        </div>
+        <ul>
+          <li
+            class="sidebar-link active-link px-6 py-3 cursor-pointer text-white font-semibold italic"
+          >
+            <i class="fa-solid fa-file-lines mr-2"></i> Use-Pages
+          </li>
+          <li
+            class="sidebar-link px-6 py-2 cursor-pointer text-gray-400"
+            onclick="window.location.href = 'index.html'"
+          >
+            <i class="fa-solid fa-arrow-left mr-2"></i> Zurück zur Übersicht
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="flex-1 p-8 md:p-16 max-w-5xl">
+      <nav class="text-sm text-gray-500 mb-8">
+        <i class="fa-solid fa-house"></i> / <span>Client Side</span> /
+        <span class="text-gray-800 font-medium font-bold italic"
+          >Use-Pages</span
+        >
+      </nav>
+
+      <header class="mb-12">
+        <h1
+          class="text-4xl font-extrabold text-gray-800 mb-4 tracking-tight border-b-4 border-blue-500 inline-block pb-2 italic"
+        >
+          Client-Facing Pages
+        </h1>
+        <p class="text-lg text-gray-600 mt-4 leading-relaxed">
+          Übersicht über alle für Kunden zugänglichen Seiten und deren
+          Funktionalitäten.
+        </p>
+      </header>
+
+      <div class="space-y-12">
+        <section
+          class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+        >
+          <div class="flex items-center mb-6">
+            <div class="bg-blue-100 text-blue-600 p-4 rounded-full mr-4">
+              <i class="fa-solid fa-house-user text-2xl"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-700">Startseite (Home)</h2>
+          </div>
+          <div class="ml-4 space-y-4">
+            <p class="text-gray-600 italic">
+              Die erste Seite, die ein Kunde sieht. Sie dient als Schaufenster
+              für unsere Dienstleistungen.
+            </p>
+            <div
+              class="bg-gray-50 p-4 rounded-lg border-l-4 border-blue-300 italic"
+            >
+              <strong>Inhalt :</strong> Listet alle angebotenen
+              Produkte/Dienstleistungen auf. Jedes Produkt wird mit einem
+              hochwertigen Bild präsentiert und ist vollständig
+              <strong>clickbar</strong>, um zur Detailseite zu gelangen.
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow italic"
+        >
+          <div class="flex items-center mb-6 italic">
+            <div class="bg-green-100 text-green-600 p-4 rounded-full mr-4">
+              <i class="fa-solid fa-cart-shopping text-2xl"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-700">
+              CardProductSeite (Produktdetail)
+            </h2>
+          </div>
+          <div class="ml-4 space-y-4 italic">
+            <p class="text-gray-600 italic">
+              Die spezifische Seite für jedes Produkt, auf der die Auswahl
+              getroffen wird.
+            </p>
+            <ul class="space-y-3 italic">
+              <li class="flex items-start italic">
+                <i class="fa-solid fa-list-check text-green-500 mt-1 mr-3"></i>
+                <span
+                  ><strong>Produktformular:</strong> Enthält alle erforderlichen
+                  Merkmale und Spezifikationen des gewählten Produkts.</span
+                >
+              </li>
+              <li class="flex items-start italic">
+                <i
+                  class="fa-solid fa-credit-card text-green-500 mt-1 mr-3 italic"
+                ></i>
+                <span
+                  ><strong>Zahlungsmethode:</strong> Integriertes Zahlungsmodul
+                  für den Abschluss der Bestellung.</span
+                >
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <footer
+        class="mt-20 pt-8 border-t border-gray-200 flex justify-between italic"
+      >
+        <a
+          href="admin-dashboard.html"
+          class="text-blue-500 font-bold hover:underline italic font-bold italic"
+          >← Admin-Dashboard</a
+        >
+      </footer>
+    </main>
+    <script src="navigation.js"></script>
+  </body>
+</html>
