@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - Dokumentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      .sidebar-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      .active-link {
+        background-color: #1a252f;
+        border-left: 4px solid #3498db;
+      }
+      h1 {
+        border-bottom: 2px solid #edf2f7;
+        padding-bottom: 0.5rem;
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+      }
+    </style>
+  </head>
+  <body class="flex bg-white font-sans text-gray-800">
+    <aside
+      class="w-64 bg-[#2c3e50] text-white sticky top-0 h-screen overflow-y-auto"
+    >
+      <div
+        class="p-4 bg-[#3498db] flex items-center justify-center cursor-pointer"
+        onclick="window.location.href = 'index.html'"
+      >
+        <span class="font-bold tracking-wider uppercase text-sm italic"
+          >STN-CMS Admin</span
+        >
+      </div>
+      <nav class="text-sm mt-4">
+        <div
+          class="px-4 py-3 text-blue-400 uppercase font-bold text-[10px] tracking-widest"
+        >
+          Management
+        </div>
+        <ul>
+          <li
+            class="sidebar-link active-link px-6 py-3 cursor-pointer text-white font-semibold"
+          >
+            <i class="fa-solid fa-gauge-high mr-2"></i> Admin-Dashboard
+          </li>
+          <li
+            class="sidebar-link px-6 py-2 cursor-pointer text-gray-400"
+            onclick="window.location.href = 'index.html'"
+          >
+            <i class="fa-solid fa-arrow-left mr-2"></i> Zurück zum Startseite
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="flex-1 p-8 md:p-16 max-w-5xl">
+      <nav class="text-sm text-gray-500 mb-8">
+        <i class="fa-solid fa-house"></i> / <span>Management</span> /
+        <span class="text-gray-800 font-medium">Admin-Dashboard</span>
+      </nav>
+
+      <section
+        class="mb-12 bg-blue-50 p-8 rounded-lg border-l-8 border-blue-500 shadow-sm"
+      >
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">Rolle & Zweck</h2>
+        <p class="text-blue-800 leading-relaxed italic text-lg">
+          Das Admin-Dashboard ist die zentrale Steuereinheit für die
+          Inhaltsverwaltung. Hier können Administratoren Bilder und Texte der
+          Client-Seite direkt ändern, ohne den Code bearbeiten zu müssen. Zudem
+          ermöglicht es die vollständige
+          <strong>Überwachung</strong> (Monitoring) der Kundenaktivitäten in
+          Echtzeit.
+        </p>
+      </section>
+      <section
+        class="mb-12 bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg shadow-sm"
+      >
+        <div class="flex items-center mb-2">
+          <i class="fa-solid fa-triangle-exclamation text-yellow-600 mr-3"></i>
+          <h3
+            class="text-sm font-bold text-yellow-800 uppercase tracking-wider"
+          >
+            Wichtiger Hinweis (Lokal)
+          </h3>
+        </div>
+        <p class="text-gray-700 leading-relaxed text-sm">
+          Nach der lokalen Installation ist das Admin-Dashboard über eine
+          Standardverbindung zugänglich. Verwenden Sie die folgenden
+          Zugangsdaten für den ersten Login:
+        </p>
+        <div
+          class="mt-4 bg-white/50 p-3 rounded border border-yellow-200 font-mono text-sm inline-block"
+        >
+          <span class="text-gray-500 italic">E-Mail:</span>
+          <strong class="text-gray-800">jopke@gmail.com</strong><br />
+          <span class="text-gray-500 italic">Passwort:</span>
+          <strong class="text-gray-800">1234</strong>
+        </div>
+      </section>
+
+      <h1
+        class="text-3xl font-extrabold text-gray-700 uppercase tracking-tight"
+      >
+        admin-dashboards/home
+      </h1>
+      <p class="text-gray-600 mb-4">
+        Verwaltung der Startseite: Hero-Sektion, Ankündigungen und allgemeine
+        Statistiken.
+      </p>
+
+      <h1
+        class="text-3xl font-extrabold text-gray-700 uppercase tracking-tight"
+      >
+        admin-dashboards/pages
+      </h1>
+      <p class="text-gray-600 mb-4">
+        Hier werden die statischen Inhalte (Texte, Banner) aller Unterseiten der
+        Client-Webseite konfiguriert.
+      </p>
+
+      <h1
+        class="text-3xl font-extrabold text-gray-700 uppercase tracking-tight"
+      >
+        admin-dashboards/zahlungmethode
+      </h1>
+      <p class="text-gray-600 mb-4">
+        Konfiguration der akzeptierten Zahlungsarten (Stripe, PayPal,
+        Überweisung) und Überwachung der Transaktionen.
+      </p>
+
+      <h1
+        class="text-3xl font-extrabold text-gray-700 uppercase tracking-tight"
+      >
+        admin-dashboards/products
+      </h1>
+      <p class="text-gray-600 mb-4">
+        Vollständiges Inventar-Management: Hinzufügen, Bearbeiten oder Löschen
+        von Dienstleistungen und Produkten.
+      </p>
+      <h1
+        class="text-3xl font-extrabold text-gray-700 uppercase tracking-tight"
+      >
+        admin-dashboards/versandpaket
+      </h1>
+
+      <section class="mb-12">
+        <p class="text-gray-600 mb-6 leading-relaxed">
+          Verwaltung der Versanddienstleister und Paketoptionen. In diesem
+          Bereich können Administratoren die Logistikpartner steuern, die den
+          Kunden beim Checkout zur Verfügung stehen.
+        </p>
+
+        <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+          <h3 class="text-lg font-bold text-gray-800 mb-4">
+            <i class="fa-solid fa-truck-fast text-blue-500 mr-2"></i>
+            Logistikpartner hinzufügen
+          </h3>
+          <p class="text-sm text-gray-600 mb-6">
+            Ermöglicht die Integration und Aktivierung neuer Versandunternehmen
+            wie:
+          </p>
+
+          <div class="flex flex-wrap gap-4 mb-6">
+            <span
+              class="px-4 py-2 bg-gray-100 rounded-full text-xs font-bold text-gray-600 border border-gray-200"
+            >
+              <i class="fa-brands fa-dhl text-red-600 mr-1"></i> DHL
+            </span>
+            <span
+              class="px-4 py-2 bg-gray-100 rounded-full text-xs font-bold text-gray-600 border border-gray-200"
+            >
+              <i class="fa-solid fa-box text-blue-600 mr-1"></i> Hermes
+            </span>
+            <span
+              class="px-4 py-2 bg-gray-100 rounded-full text-xs font-bold text-gray-600 border border-gray-200"
+            >
+              <i class="fa-brands fa-ups text-yellow-600 mr-1"></i> UPS
+            </span>
+            <span
+              class="px-4 py-2 bg-gray-100 rounded-full text-xs font-bold text-gray-600 border border-gray-200 italic"
+            >
+              + Andere Anbieter
+            </span>
+          </div>
+
+          <div class="bg-blue-50 p-4 rounded border-l-4 border-blue-400">
+            <p class="text-xs text-blue-800">
+              <strong>Funktion:</strong> Administratoren können Versandtarife
+              festlegen, Tracking-URLs hinterlegen und die Verfügbarkeit je nach
+              Region anpassen.
+            </p>
+          </div>
+        </div>
+      </section>
+      <footer class="mt-20 pt-8 border-t border-gray-100 flex justify-between">
+        <a href="index.html" class="text-blue-500 font-bold hover:underline"
+          >← Startseite</a
+        >
+      </footer>
+    </main>
+    <script src="navigation.js"></script>
+  </body>
+</html>

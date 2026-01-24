@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Datenbankstruktur - STN Dokumentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      .sidebar-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      .active-link {
+        background-color: #1a252f;
+        border-left: 4px solid #3498db;
+      }
+      h1 {
+        border-bottom: 2px solid #edf2f7;
+        padding-bottom: 0.5rem;
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+      }
+      .table-badge {
+        font-size: 0.7rem;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body class="flex bg-white font-sans text-gray-800">
+    <aside
+      class="w-64 bg-[#2c3e50] text-white sticky top-0 h-screen overflow-y-auto hidden md:block"
+    >
+      <div
+        class="p-4 bg-[#3498db] flex items-center justify-center cursor-pointer"
+        onclick="window.location.href = 'index.html'"
+      >
+        <span class="font-bold tracking-wider uppercase text-sm italic"
+          >STN-CMS Data</span
+        >
+      </div>
+      <nav class="text-sm mt-4">
+        <div
+          class="px-4 py-3 text-blue-400 uppercase font-bold text-[10px] tracking-widest"
+        >
+          Backend Reference
+        </div>
+        <ul>
+          <li
+            class="sidebar-link active-link px-6 py-3 cursor-pointer text-white font-semibold italic"
+          >
+            <i class="fa-solid fa-database mr-2 text-xs"></i> Datenbankstruktur
+          </li>
+          <li
+            class="sidebar-link px-6 py-2 cursor-pointer text-gray-400"
+            onclick="window.location.href = 'index.html'"
+          >
+            <i class="fa-solid fa-arrow-left mr-2 text-xs"></i> Zurück
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="flex-1 p-8 md:p-16 max-w-5xl">
+      <nav class="text-sm text-gray-500 mb-8">
+        <i class="fa-solid fa-house"></i> / <span>Backend</span> /
+        <span class="text-gray-800 font-medium font-bold italic"
+          >Datenbankstruktur</span
+        >
+      </nav>
+
+      <header class="mb-12">
+        <h1
+          class="text-4xl font-extrabold text-gray-800 mb-4 tracking-tight border-none"
+        >
+          Datenbank-Schema
+        </h1>
+        <p class="text-lg text-gray-600 mt-4 leading-relaxed italic">
+          Übersicht über die PostgreSQL-Tabellenstrukturen und deren Relationen
+          innerhalb des STN-CMS.
+        </p>
+      </header>
+
+      <h1
+        class="text-3xl font-extrabold text-[#2c3e50] uppercase tracking-tighter"
+      >
+        Sales (Verkäufe)
+      </h1>
+      <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8">
+        <p class="text-gray-600 mb-4 italic text-sm">
+          Speichert alle erfolgreich abgeschlossenen Transaktionen der Kunden.
+        </p>
+        <ul class="space-y-2 font-mono text-sm">
+          <li class="flex justify-between border-b border-gray-100 py-1">
+            <span
+              >ID
+              <span class="table-badge bg-blue-100 text-blue-700"
+                >PK</span
+              ></span
+            >
+            <span class="text-gray-400">UUID</span>
+          </li>
+          <li class="flex justify-between border-b border-gray-100 py-1">
+            <span>Customer_Email</span>
+            <span class="text-gray-400">String</span>
+          </li>
+          <li class="flex justify-between border-b border-gray-100 py-1">
+            <span>Total_Amount</span> <span class="text-gray-400">Decimal</span>
+          </li>
+          <li class="flex justify-between py-1">
+            <span>Sale_Date</span> <span class="text-gray-400">DateTime</span>
+          </li>
+        </ul>
+      </div>
+
+      <h1
+        class="text-3xl font-extrabold text-[#2c3e50] uppercase tracking-tighter"
+      >
+        Messages (Nachrichten)
+      </h1>
+      <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8">
+        <p class="text-gray-600 mb-4 italic text-sm">
+          Verwaltet Kundenanfragen und Kontaktformulardaten.
+        </p>
+        <ul class="space-y-2 font-mono text-sm">
+          <li class="flex justify-between border-b border-gray-100 py-1">
+            <span
+              >Msg_ID
+              <span class="table-badge bg-blue-100 text-blue-700"
+                >PK</span
+              ></span
+            >
+            <span class="text-gray-400">Int</span>
+          </li>
+          <li class="flex justify-between border-b border-gray-100 py-1">
+            <span>Sender_Name</span> <span class="text-gray-400">String</span>
+          </li>
+          <li class="flex justify-between border-b border-gray-100 py-1">
+            <span>Content</span> <span class="text-gray-400">Text</span>
+          </li>
+          <li class="flex justify-between py-1">
+            <span>Is_Read</span> <span class="text-gray-400">Boolean</span>
+          </li>
+        </ul>
+      </div>
+
+      <h1
+        class="text-3xl font-extrabold text-[#2c3e50] uppercase tracking-tighter"
+      >
+        Products (Produkte)
+      </h1>
+      <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8">
+        <p class="text-gray-600 mb-4 italic text-sm">
+          Zentrale Tabelle für alle im Frontend angezeigten Artikel.
+        </p>
+        <ul class="space-y-2 font-mono text-sm">
+          <li class="flex justify-between border-b border-gray-100 py-1">
+            <span
+              >Prod_ID
+              <span class="table-badge bg-blue-100 text-blue-700"
+                >PK</span
+              ></span
+            >
+            <span class="text-gray-400">Int</span>
+          </li>
+          <li class="flex justify-between border-b border-gray-100 py-1">
+            <span>Title</span> <span class="text-gray-400">String</span>
+          </li>
+          <li class="flex justify-between border-b border-gray-100 py-1">
+            <span>Image_URL</span> <span class="text-gray-400">String</span>
+          </li>
+          <li class="flex justify-between py-1">
+            <span>Stock_Quantity</span> <span class="text-gray-400">Int</span>
+          </li>
+        </ul>
+      </div>
+
+      <footer class="mt-20 pt-8 border-t border-gray-200">
+        <a
+          href="admin-dashboard.html"
+          class="text-blue-500 font-bold hover:underline italic italic"
+          >← Zurück zum Admin-Dashboard</a
+        >
+      </footer>
+    </main>
+  </body>
+</html>
