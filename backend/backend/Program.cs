@@ -1,5 +1,9 @@
-var builder = WebApplication.CreateBuilder(args);
+using backend.Data;
+using Microsoft.EntityFrameworkCore;
 
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 // 1. AJOUT : Permet d'utiliser les fichiers dans le dossier /Controllers
 builder.Services.AddControllers();
 
