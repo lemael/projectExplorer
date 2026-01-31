@@ -14,11 +14,9 @@ const Loader =
       <Component {...props} />
     </Suspense>
   );
+
 // Applications
 
-const CardEditor = Loader(
-  lazy(() => import("./content/applications/CardEditor")),
-);
 const LoginDashboard = Loader(
   lazy(() => import("./content/pages/Login_dashboard")),
 );
@@ -32,6 +30,24 @@ const CategoryGallery = Loader(
 const Profil = Loader(lazy(() => import("./content/applications/profil")));
 const Einstellungen = Loader(
   lazy(() => import("./content/applications/einstellungen")),
+);
+const Zahlungformular = Loader(
+  lazy(() => import("./content/applications/formularen/zahlungFormular")),
+);
+const Produkteigenschaft = Loader(
+  lazy(() => import("./content/applications/formularen/produktEigenschaft")),
+);
+const AllProducts = Loader(
+  lazy(() => import("./content/applications/produkten/allProdukt")),
+);
+const AddProduct = Loader(
+  lazy(() => import("./content/applications/produkten/addProdukt")),
+);
+const Shipping = Loader(lazy(() => import("./content/applications/shipping")));
+const Page1 = Loader(lazy(() => import("./content/applications/pages/page1")));
+const Page2 = Loader(lazy(() => import("./content/applications/pages/page2")));
+const ZahlungsMethode = Loader(
+  lazy(() => import("./content/applications/zahlungsMethode")),
 );
 const routes: RouteObject[] = [
   {
@@ -104,8 +120,36 @@ const routes: RouteObject[] = [
         element: <div>Home Page</div>,
       },
       {
-        path: "cardEditor",
-        element: <CardEditor />,
+        path: "page1",
+        element: <Page1 />,
+      },
+      {
+        path: "page2",
+        element: <Page2 />,
+      },
+      {
+        path: "allProducts",
+        element: <AllProducts />,
+      },
+      {
+        path: "addProduct",
+        element: <AddProduct />,
+      },
+      {
+        path: "produkteigenschaft",
+        element: <Produkteigenschaft />,
+      },
+      {
+        path: "zahlungformular",
+        element: <Zahlungformular />,
+      },
+      {
+        path: "shipping",
+        element: <Shipping />,
+      },
+      {
+        path: "payment",
+        element: <ZahlungsMethode />,
       },
       {
         path: "overview",
