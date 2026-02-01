@@ -9,10 +9,10 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+//import { useState } from "react";
 
 const ZahlungFormular = () => {
-  const [tabValue, setTabValue] = useState(0);
+  // const [tabValue, setTabValue] = useState(0);
 
   // Ces valeurs seront liées à ton Context plus tard
   const prices = {
