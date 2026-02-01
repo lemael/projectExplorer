@@ -13,5 +13,7 @@ namespace backend.Data
 
         // C'est ici que tu définis tes tables
         public DbSet<Product> Products { get; set; }
+
+        public DbSet<DynamicFieldProduktEigenschaft> DynamicFieldsProduktEigenschaft { get; set; }
     }
 }

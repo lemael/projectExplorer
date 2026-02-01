@@ -24,6 +24,9 @@ const LoginDashboard = Loader(
 const MailingService = Loader(
   lazy(() => import("./content/pages/MailingService")),
 );
+const Eigenschaft = Loader(
+  lazy(() => import("./content/pages/FormularProduktEigenschaft")),
+);
 const CategoryGallery = Loader(
   lazy(() => import("./content/pages/MailingService/CategoryGallery")),
 );
@@ -36,6 +39,9 @@ const Zahlungformular = Loader(
 );
 const Produkteigenschaft = Loader(
   lazy(() => import("./content/applications/formularen/produktEigenschaft")),
+);
+const ZahlungFormular = Loader(
+  lazy(() => import("./content/applications/formularen/zahlungFormular")),
 );
 const AllProducts = Loader(
   lazy(() => import("./content/applications/produkten/allProdukt")),
@@ -90,8 +96,13 @@ const routes: RouteObject[] = [
         path: "",
         element: <MailingService />,
       },
+      {
+        path: "eigenschaft/:eigenschaftKey",
+        element: <Eigenschaft />,
+      },
     ],
   },
+
   {
     path: "gallery/:categoryKey",
     element: <BaseLayout />,
@@ -142,6 +153,10 @@ const routes: RouteObject[] = [
       {
         path: "zahlungformular",
         element: <Zahlungformular />,
+      },
+      {
+        path: "zahlungformular",
+        element: <ZahlungFormular />,
       },
       {
         path: "shipping",

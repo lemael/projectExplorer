@@ -1,12 +1,14 @@
 import {
   Box,
   Card,
+  CardActionArea,
   CardContent,
   CardMedia,
   Container,
   Typography,
 } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 import { useProducts } from "../../../contexts/ProductContext";
 
 interface Product {
@@ -58,20 +60,33 @@ const MailingServices: React.FC = () => {
                 height: "100%",
                 display: "flex",
                 flexDirection: "column",
+                transition: "transform 0.2s",
+                "&:hover": { transform: "scale(1.02)" },
               }}
             >
-              <CardMedia
-                component="img"
-                image={product.image}
-                alt={product.name}
-                sx={{ height: 260 }}
-              />
-              <CardContent sx={{ flexGrow: 1 }}>
-                <Typography gutterBottom variant="h5" component="h2">
-                  {product.name}
-                </Typography>
-                <Typography>{product.description}</Typography>
-              </CardContent>
+              <CardActionArea
+                component={Link}
+                to={`eigenschaft/${product.id}`} // Utilisation de l'ID ou d'une clé unique
+                sx={{
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image={product.image}
+                  alt={product.name}
+                  sx={{ height: 260 }}
+                />
+                <CardContent sx={{ flexGrow: 1 }}>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {product.name}
+                  </Typography>
+                  <Typography>{product.description}</Typography>
+                </CardContent>
+              </CardActionArea>
             </Card>
           ))}
         </Box>

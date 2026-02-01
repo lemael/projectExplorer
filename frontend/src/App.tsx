@@ -10,6 +10,7 @@ import { AuthProvider } from "./auth/AuthContext";
 import { LayoutProvider } from "./contexts/LayoutContext"; // NOUVEAU: Import du LayoutProvider
 import { SidebarProvider } from "./contexts/SidebarContext";
 import { ProductProvider } from "./contexts/ProductContext";
+import { FormularContextProvider } from "./contexts/FormularContext";
 import ThemeProvider from "./theme/ThemeProvider";
 
 // 🛡️ NETTOYAGE DE LA CONSOLE EN PRODUCTION
@@ -44,19 +45,21 @@ function App() {
       {" "}
       {/* 1. Protection contre les crashs système */}
       <ProductProvider>
-        <ThemeProvider>
-          <AuthProvider>
-            <SidebarProvider>
-              {/* 🚨 Le LayoutProvider enveloppe tout le contenu des routes pour injecter le contexte 🚨 */}
-              <LayoutProvider activePage={activePage} onNavigate={onNavigate}>
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                  <CssBaseline />
-                  {content}
-                </LocalizationProvider>
-              </LayoutProvider>
-            </SidebarProvider>
-          </AuthProvider>
-        </ThemeProvider>
+        <FormularContextProvider>
+          <ThemeProvider>
+            <AuthProvider>
+              <SidebarProvider>
+                {/* 🚨 Le LayoutProvider enveloppe tout le contenu des routes pour injecter le contexte 🚨 */}
+                <LayoutProvider activePage={activePage} onNavigate={onNavigate}>
+                  <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <CssBaseline />
+                    {content}
+                  </LocalizationProvider>
+                </LayoutProvider>
+              </SidebarProvider>
+            </AuthProvider>
+          </ThemeProvider>
+        </FormularContextProvider>
       </ProductProvider>
     </ErrorBoundary>
   );
