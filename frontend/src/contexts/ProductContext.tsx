@@ -6,6 +6,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { API_URL } from "../constant";
 
 // 1. Définition du modèle (doit correspondre à ta classe Product.cs)
 export interface Product {
@@ -25,7 +26,7 @@ interface ProductContextType {
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
-const API_URL = `${process.env.API_URL}/api/Products`; // Ton URL Render
+const API_URL1 = `${API_URL}/Products`; // Ton URL Render
 
 export const ProductProvider = ({ children }: { children: ReactNode }) => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -35,7 +36,7 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const response = await axios.get<Product[]>(API_URL);
+      const response = await axios.get<Product[]>(API_URL1);
       setProducts(response.data);
     } catch (error) {
       console.error("Erreur lors de la récupération :", error);
@@ -47,7 +48,7 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
   // CRÉER (POST)
   const addProduct = async (newProduct: Omit<Product, "id">) => {
     try {
-      const response = await axios.post<Product>(API_URL, newProduct);
+      const response = await axios.post<Product>(API_URL1, newProduct);
       setProducts((prev) => [...prev, response.data]); // Ajout local instantané
     } catch (error) {
       console.error("Erreur lors de l'ajout :", error);
@@ -57,7 +58,7 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
   // METTRE À JOUR (PATCH/PUT)
   const updateProduct = async (id: number, updatedFields: Partial<Product>) => {
     try {
-      await axios.patch(`${API_URL}/${id}`, updatedFields);
+      await axios.patch(`${API_URL1}/${id}`, updatedFields);
       setProducts((prev) =>
         prev.map((p) => (p.id === id ? { ...p, ...updatedFields } : p)),
       );
