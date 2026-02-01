@@ -16,24 +16,24 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy.WithOrigins(
-                "http://localhost:3000", 
-                 
-                "https://project-explorer-eta.vercel.app"               ) 
+                "http://localhost:3000",
+                "https://project-explorer-eta.vercel.app")
               .AllowAnyMethod()
               .AllowAnyHeader();
+              
     });
 });
 
 var app = builder.Build();
-
+// 3. AJOUT : Activer le CORS avant les autres middlewares
+app.UseCors("AllowFrontend");
 // Configure the HTTP request pipeline.
 // NOTE : J'ai sorti Swagger du bloc IsDevelopment pour que vous puissiez 
 // voir l'interface de test sur Render (très utile pour débugger au début)
 app.UseSwagger();
 app.UseSwaggerUI();
 
-// 3. AJOUT : Activer le CORS avant les autres middlewares
-app.UseCors("AllowFrontend");
+
 
 // Optionnel : Render gère déjà le HTTPS, mais c'est une bonne pratique
 app.UseHttpsRedirection();
