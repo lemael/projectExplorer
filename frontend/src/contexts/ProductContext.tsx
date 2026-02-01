@@ -25,7 +25,7 @@ interface ProductContextType {
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
-const API_URL = "http://localhost:5297/api/Products"; // Ton URL Render
+const API_URL = `${process.env.API_URL}/api/Products`; // Ton URL Render
 
 export const ProductProvider = ({ children }: { children: ReactNode }) => {
   const [products, setProducts] = useState<Product[]>([]);

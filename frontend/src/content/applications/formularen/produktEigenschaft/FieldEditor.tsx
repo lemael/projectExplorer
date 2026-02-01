@@ -1,20 +1,18 @@
-import React from "react";
-import {
-  Box,
-  Button,
-  TextField,
-  MenuItem,
-  Select,
-  FormControl,
-  InputLabel,
-  FormControlLabel,
-  Switch,
-  IconButton,
-  Tooltip,
-  Paper,
-} from "@mui/material";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import {
+  Box,
+  FormControl,
+  FormControlLabel,
+  IconButton,
+  InputLabel,
+  MenuItem,
+  Paper,
+  Select,
+  Switch,
+  TextField,
+  Tooltip,
+} from "@mui/material";
 import { useFormContext } from "../../../../contexts/FormularContext";
 
 const FieldEditor = ({ index }: { index: number }) => {

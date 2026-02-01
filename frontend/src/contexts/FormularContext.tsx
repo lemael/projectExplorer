@@ -61,7 +61,7 @@ export const FormularContextProvider: React.FC<{
   const saveConfig = async () => {
     try {
       await axios.post(
-        "http://localhost:5297/api/dynamicfieldsProduktEigenschaft/sync",
+        `${process.env.API_URL}/dynamicfieldsProduktEigenschaft/sync`,
         fields,
       );
       alert("Configuration enregistrée !");
