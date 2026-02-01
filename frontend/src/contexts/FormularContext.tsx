@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { FormProvider, useForm, UseFormReturn } from "react-hook-form";
+import { API_URL } from "../constant";
 
 export interface DynamicField {
   id?: number;
@@ -36,7 +37,7 @@ export const FormularContextProvider: React.FC<{
 
   useEffect(() => {
     axios
-      .get(`${process.env.API_URL}/api/dynamicfieldsProduktEigenschaft`)
+      .get(`${API_URL}/api/dynamicfieldsProduktEigenschaft`)
       .then((res) => setFields(res.data))
       .finally(() => setLoading(false));
   }, []);
@@ -61,7 +62,7 @@ export const FormularContextProvider: React.FC<{
   const saveConfig = async () => {
     try {
       await axios.post(
-        `${process.env.API_URL}/dynamicfieldsProduktEigenschaft/sync`,
+        `${API_URL}/dynamicfieldsProduktEigenschaft/sync`,
         fields,
       );
       alert("Configuration enregistrée !");
