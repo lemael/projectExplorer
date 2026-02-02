@@ -58,15 +58,26 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
   // METTRE À JOUR (PATCH/PUT)
   const updateProduct = async (id: number, updatedFields: Partial<Product>) => {
     try {
-      await axios.patch(`${API_URL1}/${id}`, updatedFields);
-      setProducts((prev) =>
-        prev.map((p) => (p.id === id ? { ...p, ...updatedFields } : p)),
-      );
+      // On récupère le produit actuel pour garder les données non modifiées (comme le Name)
+      const currentProduct = products.find((p) => p.id === id);
+      if (!currentProduct) return;
+
+      // On crée l'objet "Product" complet à envoyer
+      const productData = {
+        ...currentProduct,
+        ...updatedFields,
+      };
+
+      // On envoie l'objet complet au backend
+      await axios.patch(`${API_URL1}/${id}`, productData);
+
+      // Mise à jour locale du state
+      setProducts((prev) => prev.map((p) => (p.id === id ? productData : p)));
     } catch (error) {
-      console.error("Erreur lors de la modif :", error);
+      console.error("Erreur lors de la mise à jour :", error);
+      throw error;
     }
   };
-
   useEffect(() => {
     fetchProducts();
   }, []);

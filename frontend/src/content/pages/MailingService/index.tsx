@@ -66,7 +66,7 @@ const MailingServices: React.FC = () => {
             >
               <CardActionArea
                 component={Link}
-                to={`eigenschaft/${product.id}`} // Utilisation de l'ID ou d'une clé unique
+                to={`vorzahlung/${product.id}`} // Utilisation de l'ID ou d'une clé unique
                 sx={{
                   height: "100%",
                   display: "flex",
