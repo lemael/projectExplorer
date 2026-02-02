@@ -12,12 +12,23 @@ export interface DynamicField {
   options?: string;
 }
 
+export interface ZahlungLabelFormular {
+  id?: number;
+  standardLabel: string;
+  standardSubline: string;
+  expressLabel: string;
+  expressSubline: string;
+  footerNote: string;
+  buttonText: string;
+}
 interface FormContextType {
   fields: DynamicField[];
   addField: () => void;
   updateField: (index: number, updatedField: DynamicField) => void;
   removeField: (index: number) => void;
   saveConfig: () => Promise<void>;
+  zahlungLabelFormular: ZahlungLabelFormular;
+  updateZahlungLabelFormular: (config: ZahlungLabelFormular) => Promise<void>;
   loading: boolean;
   methods: UseFormReturn<any>; // On expose les méthodes de react-hook-form
 }
@@ -71,6 +82,45 @@ export const FormularContextProvider: React.FC<{
     }
   };
 
+  const [zahlungLabelFormular, setZahlungLabelFormular] =
+    useState<ZahlungLabelFormular>({
+      standardLabel: "Standard-Preis",
+      standardSubline: "Versand-Start: vorauss.",
+      expressLabel: "Express-Preis",
+      expressSubline: "Versand-Start: sicher",
+      footerNote: "*Bei Datenübergabe vor 11 Uhr",
+      buttonText: "UPLOAD & WARENKORB",
+    });
+
+  useEffect(() => {
+    const loadZahlungConfig = async () => {
+      try {
+        const response = await axios.get(
+          "https://jopke-backend.onrender.com/api/zahlungconfig",
+        );
+        if (response.data) setZahlungLabelFormular(response.data);
+      } catch (error) {
+        console.error("Fehler beim Laden de Zahlung-Config", error);
+      }
+    };
+    loadZahlungConfig();
+  }, []);
+
+  const updateZahlungLabelFormular = async (
+    newConfig: ZahlungLabelFormular,
+  ) => {
+    try {
+      const response = await axios.post(
+        "https://jopke-backend.onrender.com/api/zahlungconfig",
+        newConfig,
+      );
+      setZahlungLabelFormular(response.data); // Update l'état global avec la réponse du serveur
+      alert("Konfiguration erfolgreich gespeichert!");
+    } catch (error) {
+      console.error("Fehler beim Speichern", error);
+      alert("Fehler beim Speichern der Konfiguration.");
+    }
+  };
   return (
     <FormContext.Provider
       value={{
@@ -79,6 +129,8 @@ export const FormularContextProvider: React.FC<{
         updateField,
         removeField,
         saveConfig,
+        zahlungLabelFormular,
+        updateZahlungLabelFormular,
         loading,
         methods,
       }}

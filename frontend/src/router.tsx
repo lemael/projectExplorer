@@ -24,9 +24,7 @@ const LoginDashboard = Loader(
 const MailingService = Loader(
   lazy(() => import("./content/pages/MailingService")),
 );
-const Eigenschaft = Loader(
-  lazy(() => import("./content/pages/FormularProduktEigenschaft")),
-);
+
 const CategoryGallery = Loader(
   lazy(() => import("./content/pages/MailingService/CategoryGallery")),
 );
@@ -55,6 +53,7 @@ const Page2 = Loader(lazy(() => import("./content/applications/pages/page2")));
 const ZahlungsMethode = Loader(
   lazy(() => import("./content/applications/zahlungsMethode")),
 );
+const VorZahlung = Loader(lazy(() => import("./content/pages/VorZahlung")));
 const routes: RouteObject[] = [
   {
     path: "status",
@@ -97,8 +96,8 @@ const routes: RouteObject[] = [
         element: <MailingService />,
       },
       {
-        path: "eigenschaft/:eigenschaftKey",
-        element: <Eigenschaft />,
+        path: "vorzahlung/:vorzahlungKey",
+        element: <VorZahlung />,
       },
     ],
   },

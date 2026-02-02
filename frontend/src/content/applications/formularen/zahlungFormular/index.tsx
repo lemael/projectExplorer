@@ -1,188 +1,109 @@
-import CheckIcon from "@mui/icons-material/Check";
+import RestartAltIcon from "@mui/icons-material/RestartAlt";
+import SaveIcon from "@mui/icons-material/Save";
 import {
   Box,
   Button,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
+  Divider,
   Paper,
+  TextField,
   Typography,
 } from "@mui/material";
-//import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useFormContext } from "../../../../contexts/FormularContext";
 
 const ZahlungFormular = () => {
-  // const [tabValue, setTabValue] = useState(0);
+  const { zahlungLabelFormular, updateZahlungLabelFormular, loading } =
+    useFormContext();
 
-  // Ces valeurs seront liées à ton Context plus tard
-  const prices = {
-    standard: "58,91 €",
-    express: "67,30 €",
-    unit1: "55,91 €",
-    unit3: "31,25 €",
-  };
+  // État local pour le formulaire
+  const [localConfig, setLocalConfig] = useState(zahlungLabelFormular);
+
+  // Synchroniser l'état local quand les données arrivent du backend
+  useEffect(() => {
+    setLocalConfig(zahlungLabelFormular);
+  }, [zahlungLabelFormular]);
+
+  const handleChange =
+    (prop: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      setLocalConfig({ ...localConfig, [prop]: e.target.value });
+    };
+
+  if (loading) return null;
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center", // Centrage horizontal
-        alignItems: "center", // Centrage vertical
-        minHeight: "100vh", // Optionnel : occupe toute la hauteur de l'écran
-        p: 2, // Espacement pour éviter qu'il ne touche les bords sur mobile
-      }}
-    >
-      <Paper
-        elevation={3}
+    <Paper sx={{ p: 3, mb: 4, borderRadius: 2 }}>
+      <Typography variant="h6" mb={2} fontWeight="bold">
+        Labels der Zahlungskarte anpassen
+      </Typography>
+
+      <Box
         sx={{
-          maxWidth: 600,
-          width: "100%",
-          borderRadius: 2,
-          overflow: "hidden",
-          border: "1px solid #e0e0e0",
+          display: "grid",
+          gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
+          gap: 3,
         }}
       >
-        {/* Onglets Versand / Abholung 
-        <Tabs
-          value={tabValue}
-          onChange={(_, newValue) => setTabValue(newValue)}
-          variant="fullWidth"
-          sx={{ borderBottom: 1, borderColor: "divider" }}
+        <TextField
+          label="Standard Preis Label"
+          value={localConfig.standardLabel || ""}
+          onChange={handleChange("standardLabel")}
+          fullWidth
+        />
+        <TextField
+          label="Standard Subline"
+          value={localConfig.standardSubline || ""}
+          onChange={handleChange("standardSubline")}
+          fullWidth
+        />
+        <TextField
+          label="Express Preis Label"
+          value={localConfig.expressLabel || ""}
+          onChange={handleChange("expressLabel")}
+          fullWidth
+        />
+        <TextField
+          label="Express Subline"
+          value={localConfig.expressSubline || ""}
+          onChange={handleChange("expressSubline")}
+          fullWidth
+        />
+        <TextField
+          label="Footer Info"
+          value={localConfig.footerNote || ""}
+          onChange={handleChange("footerNote")}
+          fullWidth
+          sx={{ gridColumn: { md: "span 2" } }}
+        />
+        <TextField
+          label="Button Text"
+          value={localConfig.buttonText || ""}
+          onChange={handleChange("buttonText")}
+          fullWidth
+          sx={{ gridColumn: { md: "span 2" } }}
+        />
+      </Box>
+
+      <Divider sx={{ my: 3 }} />
+
+      <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 2 }}>
+        <Button
+          variant="outlined"
+          color="inherit"
+          startIcon={<RestartAltIcon />}
+          onClick={() => setLocalConfig(zahlungLabelFormular)}
         >
-          <Tab
-            icon={<LocalShippingIcon />}
-            label="Versand"
-            sx={{ textTransform: "none", fontWeight: "bold" }}
-          />
-          <Tab
-            icon={<StorefrontIcon />}
-            label="Abholung"
-            sx={{ textTransform: "none", fontWeight: "bold" }}
-          />
-        </Tabs>
-*/}
-        <Box sx={{ p: 2 }}>
-          {/* Prix Standard */}
-          <Box
-            sx={{ display: "flex", justifyContent: "space-between", mb: 0.5 }}
-          >
-            <Typography variant="body1" fontWeight="500">
-              Standard-Preis
-            </Typography>
-            <Typography variant="body1" fontWeight="bold">
-              {prices.standard}
-            </Typography>
-          </Box>
-          <Typography
-            variant="caption"
-            color="textSecondary"
-            display="block"
-            sx={{ mb: 2 }}
-          >
-            Versand-Start: vorauss. 04.02.*
-          </Typography>
-
-          {/* Business Preis */}
-          <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
-            <Typography variant="body1">Best-Business-Preis</Typography>
-            <Typography
-              variant="body1"
-              color="primary"
-              sx={{ cursor: "pointer" }}
-            >
-              Login
-            </Typography>
-          </Box>
-
-          {/* Prix Express */}
-          <Box
-            sx={{ display: "flex", justifyContent: "space-between", mb: 0.5 }}
-          >
-            <Typography variant="body1" fontWeight="500">
-              Express-Preis
-            </Typography>
-            <Typography variant="body1" fontWeight="bold">
-              {prices.express}
-            </Typography>
-          </Box>
-          <Typography
-            variant="caption"
-            color="success.main"
-            fontWeight="500"
-            display="block"
-            sx={{ mb: 2 }}
-          >
-            Versand-Start: sicher 02.02.*
-          </Typography>
-
-          {/* Liste des avantages */}
-          <List dense sx={{ p: 0, mb: 2 }}>
-            <ListItem disableGutters sx={{ py: 0 }}>
-              <ListItemIcon sx={{ minWidth: 25 }}>
-                <CheckIcon color="success" sx={{ fontSize: 16 }} />
-              </ListItemIcon>
-              <ListItemText
-                primary={
-                  <Typography variant="body2">inkl. Versand & MwSt.</Typography>
-                }
-              />
-            </ListItem>
-            <ListItem disableGutters sx={{ py: 0 }}>
-              <ListItemIcon sx={{ minWidth: 25 }}>
-                <CheckIcon color="success" sx={{ fontSize: 16 }} />
-              </ListItemIcon>
-              <ListItemText
-                primary={
-                  <Typography variant="body2">
-                    inkl. kurzer Datensichtung
-                  </Typography>
-                }
-              />
-            </ListItem>
-          </List>
-
-          <Typography
-            variant="caption"
-            color="textSecondary"
-            display="block"
-            sx={{ mb: 2 }}
-          >
-            *Bei Datenübergabe vor 11 Uhr
-          </Typography>
-
-          {/* Bouton Action */}
-          <Button
-            variant="contained"
-            fullWidth
-            size="large"
-            sx={{
-              bgcolor: "#00a1e0",
-              "&:hover": { bgcolor: "#0081b3" },
-              borderRadius: 10,
-              py: 1.5,
-              fontWeight: "bold",
-              textTransform: "uppercase",
-              mb: 3,
-            }}
-          >
-            Upload & Warenkorb
-          </Button>
-
-          {/* Exemplarpreise */}
-          <Typography variant="subtitle2" fontWeight="bold" sx={{ mb: 1 }}>
-            Exemplarpreise
-          </Typography>
-          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-            <Typography variant="body2">1 Stück</Typography>
-            <Typography variant="body2">{prices.unit1}</Typography>
-          </Box>
-          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-            <Typography variant="body2">3 Stück</Typography>
-            <Typography variant="body2">{prices.unit3}</Typography>
-          </Box>
-        </Box>
-      </Paper>
-    </Box>
+          Reset
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          startIcon={<SaveIcon />}
+          onClick={() => updateZahlungLabelFormular(localConfig)}
+        >
+          Speichern
+        </Button>
+      </Box>
+    </Paper>
   );
 };
 

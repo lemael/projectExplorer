@@ -24,17 +24,23 @@ public class ProductsController : ControllerBase
 
     // PATCH: api/products/1
     [HttpPatch("{id}")]
-    public async Task<IActionResult> UpdateProduct(int id, [FromBody] ProductUpdateDto dto)
-    {
-        var product = await _context.Products.FindAsync(id);
-        if (product == null) return NotFound();
+public async Task<IActionResult> UpdateProduct(int id, [FromBody] Product updatedProduct)
+{
+    var product = await _context.Products.FindAsync(id);
+    if (product == null) return NotFound();
 
-        product.Description = dto.Description;
-        product.Image = dto.Image;
+    // On met à jour les champs. 
+    // Note : updatedProduct.Id sera probablement 0 ou l'ID envoyé, 
+    // mais on utilise l'ID de l'URL pour la sécurité.
+    if (!string.IsNullOrEmpty(updatedProduct.Description)) 
+        product.Description = updatedProduct.Description;
+        
+    if (!string.IsNullOrEmpty(updatedProduct.Image)) 
+        product.Image = updatedProduct.Image;
 
-        await _context.SaveChangesAsync();
-        return NoContent();
-    }
+    await _context.SaveChangesAsync();
+    return NoContent();
+}
 
     [HttpPost]
 public async Task<ActionResult<Product>> PostProduct(Product product)
