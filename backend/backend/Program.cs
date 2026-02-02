@@ -17,9 +17,8 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins(
                 "http://localhost:3000", 
-                "http://localhost:5173", 
-                "https://jopke-backend.onrender.com" // Votre URL Render
-              ) 
+                 
+                "https://project-explorer-eta.vercel.app"               ) 
               .AllowAnyMethod()
               .AllowAnyHeader();
     });
