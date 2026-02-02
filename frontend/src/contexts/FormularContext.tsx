@@ -37,7 +37,7 @@ export const FormularContextProvider: React.FC<{
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/api/dynamicfieldsProduktEigenschaft`)
+      .get(`${API_URL}/dynamicfieldsProduktEigenschaft`)
       .then((res) => setFields(res.data))
       .finally(() => setLoading(false));
   }, []);
